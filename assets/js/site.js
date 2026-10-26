@@ -38,7 +38,8 @@
   const ex = (cfg.exceptions || []).find(x => x.date === t.date);
   const closedToday = ex ? !!ex.closed : (cfg.closedWeekdays || [1]).includes(t.wd);
   const lunch = (ex && ex.lunch) || (cfg.hours && cfg.hours.lunch) || ["11:00", "15:30"];
-  const dinner = (ex && ex.dinner) || (cfg.hours && cfg.hours.dinner) || ["16:30", "20:00"];
+  const dinner = (ex && ex.dinner) || (cfg.hours && cfg.hours.dinner) || ["17:00", "20:00"];
+  const lastOrder = (cfg.hours && cfg.hours.dinnerLastOrder) || "19:30";
 
   let state, label;
   if (closedToday) {
@@ -46,7 +47,7 @@
   } else if (t.min >= toMin(lunch[0]) && t.min < toMin(lunch[1])) {
     state = "open"; label = `ただいまランチ営業中（${lunch[1]}まで）`;
   } else if (t.min >= toMin(dinner[0]) && t.min < toMin(dinner[1])) {
-    state = "open"; label = `ただいまディナー営業中（${dinner[1]}まで）`;
+    state = "open"; label = t.min >= toMin(lastOrder) ? `ディナーのラストオーダーは${lastOrder}で終了しました` : `ただいまディナー営業中（L.O. ${lastOrder}）`;
   } else if (t.min < toMin(lunch[0])) {
     state = "soon"; label = `本日は${lunch[0]}から営業します`;
   } else if (t.min < toMin(dinner[0])) {
@@ -67,7 +68,7 @@
   if (th) {
     th.textContent = closedToday
       ? `${t.month}月${+t.date.slice(8)}日（${WD[t.wd]}）はお休みです`
-      : `${t.month}月${+t.date.slice(8)}日（${WD[t.wd]}） ランチ ${fmt(lunch)} ／ ディナー ${fmt(dinner)}`;
+      : `${t.month}月${+t.date.slice(8)}日（${WD[t.wd]}） ランチ ${fmt(lunch)} ／ ディナー ${fmt(dinner)}（L.O. ${lastOrder}）`;
   }
   const row = document.querySelector(`[data-hours] tr[data-day="${t.wd}"]`);
   if (row) row.classList.add("is-today");

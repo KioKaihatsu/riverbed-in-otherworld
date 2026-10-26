@@ -280,3 +280,4 @@ p{margin:0}
   html{scroll-behavior:auto}
   *{transition:none!important;animation:none!important}
 }
+.hours td small{display:block;font-size:11.5px;color:var(--muted);line-height:1.3}
