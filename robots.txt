@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kiokaihatsu.github.io/riverbed-in-otherworld/sitemap.xml
