@@ -102,21 +102,16 @@ p{margin:0}
 .omurice-photo figcaption{position:absolute;left:18px;bottom:18px;background:rgba(16,48,47,.78);color:var(--on-deep);font-size:13px;padding:4px 14px;border-radius:999px;backdrop-filter:blur(4px)}
 
 .sauces{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,2vw,24px)}
-.sauce{background:var(--paper);border-radius:20px;padding:22px 20px 24px;display:flex;flex-direction:column;gap:6px;border:1px solid var(--line)}
-.sauce h3{font-family:var(--mincho);font-weight:800;font-size:20px;line-height:1.4;margin-top:10px}
+.sauce{background:var(--paper);border-radius:20px;padding:12px 12px 22px;display:flex;flex-direction:column;gap:6px;border:1px solid var(--line)}
+.sauce h3{font-family:var(--mincho);font-weight:800;font-size:20px;line-height:1.4;margin-top:10px;padding-inline:8px}
+.sauce p{padding-inline:8px}
 .sauce p{font-size:14px;color:var(--muted);line-height:1.7}
 .sauce .price{margin-top:auto;padding-top:10px;color:var(--ink);font-size:14px}
 .sauce .price span{font-family:var(--latin);font-size:30px;font-variant-numeric:tabular-nums lining-nums;margin-right:2px}
 .sauce-note{margin-top:18px;font-size:14px;color:var(--muted)}
-/* お皿のイラスト：ソースの色だけで4種類を描き分ける */
-.plate{position:relative;width:100%;max-width:190px;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 50%,#fff 0 54%,#F1F2EE 55% 62%,#fff 63% 100%);box-shadow:0 14px 26px -16px rgba(23,32,30,.45),inset 0 0 0 1px #E4E7E2;margin-inline:auto}
-.plate .pool{position:absolute;inset:22% 16% 24% 16%;border-radius:48% 52% 46% 54%/55% 50% 50% 45%;background:var(--pool)}
-.plate .egg{position:absolute;inset:32% 22% 34% 22%;border-radius:50%/60%;background:radial-gradient(ellipse at 40% 30%,#FFE59A 0,#F7C33A 45%,#E9A715 100%);transform:rotate(-14deg);box-shadow:0 6px 10px -6px rgba(120,70,0,.5)}
-.plate .drizzle{position:absolute;inset:44% 30% 46% 30%;border-radius:999px;background:var(--sauce);transform:rotate(-14deg);opacity:.95}
-.plate .drizzle::before,.plate .drizzle::after{content:"";position:absolute;width:18%;height:180%;top:-40%;background:var(--sauce);border-radius:999px}
-.plate .drizzle::before{left:22%;transform:rotate(30deg)}
-.plate .drizzle::after{right:22%;transform:rotate(30deg)}
-.sauce:hover .egg{transform:rotate(-14deg) scale(1.03);transition:transform .3s}
+.sauce-photo{width:100%;aspect-ratio:1;object-fit:cover;border-radius:14px;transition:transform .35s}
+.sauce{overflow:hidden}
+.sauce:hover .sauce-photo{transform:scale(1.03)}
 
 /* ---------- menu band ---------- */
 .menu-band{background:var(--deep);color:var(--on-deep);position:relative}
@@ -265,7 +260,7 @@ p{margin:0}
   .walk{grid-template-columns:1fr}
   .walk li,.walk li+li{padding:20px 0;border-left:0}
   .walk li+li{border-top:1px solid var(--line)}
-  .sauce{padding:16px 14px 18px}
+  .sauce{padding:8px 8px 16px}
   .sauce h3{font-size:17px}
   .sauce .price span{font-size:25px}
   .float-call{display:flex;align-items:center;gap:8px;position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;background:var(--yolk);color:#231700;text-decoration:none;font-weight:700;font-size:15px;padding:13px 20px 13px 16px;border-radius:999px;box-shadow:0 12px 28px -10px rgba(16,48,47,.6);transform:translateY(140%);transition:transform .3s}
